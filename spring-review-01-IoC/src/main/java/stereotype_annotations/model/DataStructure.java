@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class DataStructure {
 //    @Autowired
-//ExtraHours extraHours;   bu sekilde sadece constructor olmadan field injection, asagidaki ise constructor ile
+// asagidaki xtraHours xtraHours;   bu sekilde sadece constructor olmadan field injection, asagidaki ise constructor ile
   @NonNull
     ExtraHours extraHours;
   //  @Autowired   // NORMALDE ANOTATION KOYMAYA GEREK YOK
