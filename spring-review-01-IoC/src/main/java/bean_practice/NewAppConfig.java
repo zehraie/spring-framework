@@ -17,8 +17,4 @@ public class NewAppConfig {
         return "Spring Core Practice";
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> review1Jamal
 }
