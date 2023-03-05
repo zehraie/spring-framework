@@ -8,6 +8,6 @@ import org.springframework.stereotype.Component;
 public class OvertimeHours implements HoursRepository{
     @Override
     public int getHours() {
-        return 15;
+        return 115;
     }
 }

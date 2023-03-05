@@ -15,7 +15,7 @@ public class OvertimeSalaryService {
     }
 
     public void calculateOvertimeSalary(){
-        System.out.println(hoursRepository.getHours());
+        System.out.println(hoursRepository.getHours()+ employeeRepository.getHourlyRate());
     }
 
 

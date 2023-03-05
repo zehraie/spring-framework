@@ -3,6 +3,7 @@ package com.cydeo;
 import com.cydeo.config.EmployeeConfig;
 import com.cydeo.model.Employee;
 import com.cydeo.repository.HoursRepository;
+import com.cydeo.repository.OvertimeHours;
 import com.cydeo.repository.RegularHours;
 import com.cydeo.service.OvertimeSalaryService;
 import com.cydeo.service.SalaryService;
@@ -17,8 +18,15 @@ public class CydeoApp { //runner
 
        SalaryService salaryService = container.getBean(SalaryService.class);
        salaryService.calculateRegularSalary();
-        RegularHours hr = container.getBean(RegularHours.class);
-        System.out.println(hr);
+        SalaryService sr = container.getBean(SalaryService.class);
+        sr.calculateRegularSalary();
+
+        RegularHours rehularHours = container.getBean(RegularHours.class);
+        System.out.println("regularHours : "+rehularHours.getHours());
+
+        OvertimeHours overtimeHours = container.getBean(OvertimeHours.class);
+        System.out.println(overtimeHours.getHours());
+
 
         OvertimeSalaryService overtimeSalaryService = container.getBean(OvertimeSalaryService.class);
         overtimeSalaryService.calculateOvertimeSalary();
