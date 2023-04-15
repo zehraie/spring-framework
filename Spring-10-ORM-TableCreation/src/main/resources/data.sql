@@ -1,0 +1,8 @@
+
+INSERT INTO EMPLOYEES(id, name)
+VALUES (1,'Mike Kayahan');
+INSERT INTO EMPLOYEES(id, name)
+VALUES (200,'Taha TOP');
+INSERT INTO EMPLOYEES(id, name)
+VALUES (25,'Rana Pink');
+
