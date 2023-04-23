@@ -29,6 +29,8 @@ private Status paymentStatus;
 
     @OneToOne(cascade = CascadeType.ALL)
 private PaymentDetail paymentDetail;
+@ManyToOne
+    private Merchant merchant;
 
 
 }
