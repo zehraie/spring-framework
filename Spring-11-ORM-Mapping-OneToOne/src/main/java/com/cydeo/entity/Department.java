@@ -16,6 +16,7 @@ public class Department extends BaseEntity{
     private String division;
     @OneToOne(mappedBy = "department")// bunun saysinde employee class taki field ile uymak zorunda
     // ve bununsayesinde Employee table da sadece forandkey ye sahibiz
+    // owner of this  forandKey is employee table
     private Employee employee;
 
 
