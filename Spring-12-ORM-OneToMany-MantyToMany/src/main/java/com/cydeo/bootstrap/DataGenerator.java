@@ -41,16 +41,17 @@ public class DataGenerator implements CommandLineRunner {
         PaymentDetail paymentDetail3 = new PaymentDetail(new BigDecimal("190000"),new BigDecimal("555000"),LocalDate.of(2023,3,13));
 
         payment3.setPaymentDetail(paymentDetail3);
-        paymentRepository.save(payment1);
-        paymentRepository.save(payment2);
-        paymentRepository.save(payment3);
+
 
         Merchant merchant1 = new Merchant("AmazonSubMerchant","M123",new BigDecimal("0.25"),new BigDecimal("3.25"),5);
-     // i ahve one merchant and three payments
+        // i ahve one merchant and three payments
+
         payment1.setMerchant(merchant1);
         payment2.setMerchant(merchant1);
         payment3.setMerchant(merchant1);
-
+        paymentRepository.save(payment1);
+        paymentRepository.save(payment2);
+        paymentRepository.save(payment3);
 
         merchantRepository.save(merchant1);
 
