@@ -18,6 +18,11 @@ public class Item { // there is manyToMany between cart and item, you need helpe
     private String name;
     private String code;
 
+    public Item(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
+
     @ManyToMany(mappedBy = "itemList")// card can
     private List<Card> card;// use Set in some occasition
     // items_card will be created and we call this join table

@@ -1,19 +1,16 @@
 package com.cydeo.bootstrap;
 
 import com.cydeo.enums.Status;
-import com.cydeo.model.Customer;
-import com.cydeo.model.Merchant;
-import com.cydeo.model.Payment;
-import com.cydeo.model.PaymentDetail;
-import com.cydeo.repository.CustomerRepository;
-import com.cydeo.repository.MerchantRepository;
-import com.cydeo.repository.PaymentRepository;
+import com.cydeo.model.*;
+import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
+
 @Component
 public class DataGenerator implements CommandLineRunner {
 
@@ -21,11 +18,15 @@ public class DataGenerator implements CommandLineRunner {
     private final MerchantRepository merchantRepository;
 
     private final CustomerRepository customerRepository;
+    private final ItemRepository itemRepository;
+    private final CardRepository cardRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, CustomerRepository customerRepository, ItemRepository itemRepository, CardRepository cardRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
         this.customerRepository = customerRepository;
+        this.itemRepository = itemRepository;
+        this.cardRepository = cardRepository;
     }
 
     @Override
@@ -60,6 +61,22 @@ public class DataGenerator implements CommandLineRunner {
         payment1.setMerchant(merchant1);
         payment2.setMerchant(merchant1);
         payment3.setMerchant(merchant1);
+        Item item1 = new Item("Milk", "M01");
+        Item item2 = new Item("Juice", "S01");
+        Item item3 = new Item("Coke", "T01");
+
+        Card card1 = new Card();
+        Card card2 = new Card();
+
+        card1.setItemList(Arrays.asList(item1,item2,item3));
+        card2.setItemList(Arrays.asList(item1,item3));
+        itemRepository.save(item1);
+        itemRepository.save(item2);
+        itemRepository.save(item3);
+
+        cardRepository.save(card1);
+        cardRepository.save(card2);
+
         merchantRepository.save(merchant1);
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);

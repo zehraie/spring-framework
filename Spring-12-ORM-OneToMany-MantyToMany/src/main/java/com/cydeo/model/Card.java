@@ -16,5 +16,5 @@ public class Card {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
  @ManyToMany
-    private List<Item> itemList;
+    private List<Item> itemList; // card is ownership
 }
