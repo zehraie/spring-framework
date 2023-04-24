@@ -31,6 +31,8 @@ private Status paymentStatus;
 private PaymentDetail paymentDetail;
 @ManyToOne
     private Merchant merchant;
+@ManyToOne
+private Customer customer;
 
 
 }
