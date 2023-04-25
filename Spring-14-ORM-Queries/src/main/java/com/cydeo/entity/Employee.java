@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @Table(name = "employees")
 public class Employee extends BaseEntity{
 
-    private String firtName;
+    private String firstName;
     private String lastName;
     private String email;
     @Column(columnDefinition = "DATE")
@@ -21,8 +21,10 @@ public class Employee extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private Integer salary;
-
+    @ManyToOne
+    @JoinColumn(name="department")
     private Department department;
+    @ManyToOne
     private Region region;
 
 
