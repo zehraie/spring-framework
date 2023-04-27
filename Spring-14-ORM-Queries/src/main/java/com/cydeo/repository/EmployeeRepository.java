@@ -48,9 +48,51 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
 
     @Query("SELECT e.gender FROM Employee e where e.email='bmanueau0@dion.ne.jp'")
     String getEmployeeGender();
- @Query("SELECT e FROM Employee e where e.email=?1")
+ @Query("SELECT e FROM Employee e where e.email=?1") // Employee is class name never forget
     Optional<Employee>getEmployeeDetail(String email);
     @Query("SELECT e FROM Employee e where e.email=?1 AND e.salary=?2")
  Employee getEmployeeDetail(String email, int salary);
+
+    //Not equal
+    @Query("SELECT e FROM Employee e where e.salary<>?1")// <> means not equal
+    List<Employee> getEmployeeSalaryNotEqual(int salary);
+
+    //like/contains/startwith/endwith
+    @Query("SELECT e FROM Employee e where e.firstName like ?1")
+    List<Employee> getEmployeeFirstNameLike(String pattern);
+
+    //less than
+    @Query("SELECT e FROM Employee e where e.salary< ?1")
+    List<Employee> getEmployeeSalaryLessThan(int salary);
+
+    //greater than
+    @Query("SELECT e FROM Employee e where e.salary > ?1")
+    List<Employee> getEmployeeSalaryGreaterThan(int salary);
+
+    //Before
+    @Query("SELECT e from Employee e where e.hireDate > ?1")
+    List<Employee> getEmployeeHireDateBefore(LocalDate date);
+
+    //Between
+    @Query("SELECT e from Employee e where e.salary between ?1 AND ?2")
+    List<Employee> getEmployeeSalaryBetween(int salary1, int salary2);
+
+    //Null  use optional for null pointer exception
+    @Query("SELECT e FROM Employee e where e.email Is not NULL")
+    List<Employee> getEmployeeEmailIsNull();
+
+    //sorting in ascending order
+    @Query("SELECT e FROM Employee e ORDER BY e.salary")
+    List<Employee> getEmployeeSalaryOrderAsc();
+
+    //sorting in descending order
+    @Query("SELECT e FROM Employee e ORDER BY e.salary desc ")
+    List<Employee> getEmployeeSalaryOrderDesc();
+
+    @Query(value = "SELECT * employees where salary ?1", nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
+ @Query("select e from Employee e where e.salary =: salary") //Named Parameters
+    List<Employee> getEmployeeSalary(int salary);
+
 
 }
