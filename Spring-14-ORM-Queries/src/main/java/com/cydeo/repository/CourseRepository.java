@@ -31,19 +31,9 @@ public interface CourseRepository extends JpaRepository<Course,Long> {
     // find all courses by category and returns a stream
     Stream<Course> streamByCategory(String category);
 
-    @Query("select e from Course e where e.category= : category AND :rating")
+    @Query("select e from Course e where e.category= :category AND e.rating> :rating")
     List<Course> findAllByCategoryAndRatingGreaterThan(@Param("category") String category, @Param("rating") int rating);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE Employee e SET e.email= 'admin@email.com' where e.id=:id")
-    void updateEmployeeJPQL(@Param("id") int id);
-
-    //sql=Native Query
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE employees  SET email= 'admin@email.com' where id=:id", nativeQuery = true)
-    void updateEmployeeNativeQuery(@Param("id") int id);
 
 
 

@@ -2,9 +2,12 @@ package com.cydeo.repository;
 
 import com.cydeo.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -94,5 +97,15 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
  @Query("select e from Employee e where e.salary =: salary") //Named Parameters
     List<Employee> getEmployeeSalary(int salary);
 
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE Employee e SET e.email = 'admin@email.com' WHERE e.id=:id")
+    void updateEmployeeJPQL(@Param("id") int id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE employees SET email = 'admin@email.com' WHERE id=:id",nativeQuery = true)
+    void updateEmployeeNativeQuery(@Param("id") int id);
 
 }
