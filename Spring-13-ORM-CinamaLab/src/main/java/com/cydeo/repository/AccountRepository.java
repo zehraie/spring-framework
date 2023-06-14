@@ -25,7 +25,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //Write a derived query to list all accounts where the beginning of the address contains the keyword
   List<Account> findAllByAddressStartingWith(String keyword);
     //Write a derived query to sort the list of accounts with age
-    List<Account> findAllByOOrderByAgeDesc();
+    List<Account> findAllByOrderByAgeDesc();
 
     // ------------------- JPQL QUERIES ------------------- //
 
@@ -46,6 +46,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
   List<Account> retrieveAllByAgeLowerThan(@Param("age") Integer age);
     //Write a native query to read all accounts that a specific value can be containable in the name, address, country, state city
    @Query(value = "select * from account_details where name ILIKE concat('%',?1,'%')"
+           // @Query(value = "select * from account_details where name ILIKE ('%'||?1||KER'%')"
            +"OR address ILIKE concat('%',?1,'%')"+
            "OR country ILIKE concat('%',?1,'%')"+
            "OR state ILIKE concat('%',?1,'%')"+
@@ -54,6 +55,6 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     //Write a native query to read all accounts with an age lower than a specific value
 
 }/*
-baska bir yapida case insensitive yapmak icin LIKE yapip lower eklenmeli
+baska bir yapida case insensitive yapmak icin LIKE(sensitive) yapip lower eklenmeli
 "OR  lower address LIKE lower concat('%',?1,'%')"
 */
