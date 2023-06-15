@@ -45,6 +45,9 @@ List<Cinema> findFirst3BySponsoredNameContainingOrderBySponsoredName(String spon
     @Query(value= "SELECT * from cinema ORDER BY name",nativeQuery = true)
     List<Cinema> sortByName();
     //Write a native query to distinct all cinemas by sponsored name
-    @Query(value= "SELECT DISTINCT sponsored_name from cinema ",nativeQuery = true)
-    List<Cinema> distinctBySponsoreName();
+//    @Query(value= "SELECT DISTINCT sponsored_name from cinema ",nativeQuery = true)
+//    List<Cinema> distinctBySponsoredName();
+
+    @Query(value = "SELECT DISTINCT sponsored_name FROM cinema",nativeQuery = true)
+    List<String> distinctBySponsoredName();
 }
