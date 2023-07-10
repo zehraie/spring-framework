@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(WelcomeController.class)
+@WebMvcTest(StudentController.class) // UNUTMA BURAYI YANLIS YAZDIN WELCOMECONTROLLER YAZMISSIN
 class StudentControllerTest {
     @Autowired
     private MockMvc mvc;
